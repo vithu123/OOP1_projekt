@@ -29,7 +29,7 @@ public class  Printer extends PrinterStatus{
     public void setPosition(float[] position) {
         this.position = position;
     }
-
+    
     
 
 

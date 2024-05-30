@@ -1,11 +1,18 @@
 package com.example;
 
 public class PrintJob {
-    private String fileNmae;
+    private String fileName;
     private int progress;
     private String stage;
-    public String getFileNmae() {
-        return fileNmae;
+
+    public PrintJob(String fileName) {
+        this.fileName = fileName;
+        this.progress = 0;
+        this.stage = "Warten";
+    }
+
+    public String getFileName() {
+        return fileName;
     }
     public int getProgress() {
         return progress;
@@ -13,17 +20,13 @@ public class PrintJob {
     public String getStage() {
         return stage;
     }
-    public void setFileNmae(String fileNmae) {
-        this.fileNmae = fileNmae;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
     public void setProgress(int progress) {
         this.progress = progress;
     }
     public void setStage(String stage) {
         this.stage = stage;
-    }
-
-    
-
-    
+    }    
 }

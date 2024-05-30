@@ -8,15 +8,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
+/* 
+JavaFX App
  
-
+*/
 public class App extends Application {
 
-    /*private static Scene scene;
+    private static Scene scene;
 
     public static void main(String[] args) {
+        System.out.println("3D drucker Dashbord gestartet!");
+        Druckerverwaltung  test = new  Druckerverwaltung();
+        PrintJob file1 = new PrintJob("test1");
+        test.addJob(file1);
+        test.startNextJob();
+        test.startNextJob();
+
+
         launch();
     }
 
@@ -37,4 +45,4 @@ public class App extends Application {
     }
     
 
-}*/
+}
