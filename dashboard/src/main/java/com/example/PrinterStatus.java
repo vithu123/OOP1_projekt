@@ -1,12 +1,12 @@
 package com.example;
 
-public class PrinterStatus extends PrintJob {
+public class PrinterStatus /*extends PrintJob */{
 
     private boolean isPrinting;
     private String currentJob;
 
     public PrinterStatus() {
-        super("kein job"); 
+        //super("kein job"); 
         this.isPrinting = false;
         this.currentJob = "Kein Job"; 
     }

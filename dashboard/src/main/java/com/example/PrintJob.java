@@ -1,6 +1,6 @@
 package com.example;
 
-public class PrintJob {
+public class PrintJob extends Printer {
     private String fileName;
     private int progress;
     private String stage;
