@@ -1,15 +1,9 @@
 package com.example;
 
-public class PrintJob extends Printer {
+public class PrintJob {
     private String fileName;
     private int progress;
     private String stage;
-
-    public PrintJob(String fileName) {
-        this.fileName = fileName;
-        this.progress = 0;
-        this.stage = "Warten";
-    }
 
     public String getFileName() {
         return fileName;

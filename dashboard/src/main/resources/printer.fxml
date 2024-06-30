@@ -31,12 +31,12 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="121.0" layoutY="129.0" mnemonicParsing="false" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                              <Button fx:id="setPrinter1" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="121.0" layoutY="129.0" mnemonicParsing="false" onAction="#plus1" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
                               </Button>
-                              <AnchorPane layoutX="15.0" layoutY="10.0" prefHeight="263.0" prefWidth="265.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
+                              <AnchorPane fx:id="menuPrinter1" layoutX="14.0" layoutY="8.0" prefHeight="263.0" prefWidth="265.0">
                                  <children>
                                     <Label alignment="CENTER" layoutX="23.0" layoutY="22.0" text="3D Printer #1" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -67,42 +67,42 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
+                                    <Label fx:id="X_1" alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
+                                    <Label fx:id="Y_1" alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
+                                    <Label fx:id="Z_1" alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="130.0" layoutY="193.0" text="EXDRUDER:" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="193.0" />
                                     <Label layoutX="130.0" layoutY="213.0" prefHeight="17.0" prefWidth="67.0" text="BED:" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="213.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
-                                    <ChoiceBox layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
-                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                    <Label fx:id="nozzTemp_1" alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
+                                    <Label fx:id="bedTemp_1" alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
+                                    <ChoiceBox fx:id="choiceBox1" layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
+                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" onAction="#close1" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
                                     <Label layoutX="130.0" layoutY="233.0" prefHeight="17.0" prefWidth="67.0" text="Status:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="231.0" />
-                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" onAction="#connect" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
+                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" onAction="#conntect1" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
+                                    <Label fx:id="status_1" alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="123.0" layoutY="122.0" mnemonicParsing="false" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                              <Button fx:id="setPrinter3" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="123.0" layoutY="122.0" mnemonicParsing="false" onAction="#plus3" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
                               </Button>
-                              <AnchorPane layoutX="15.0" layoutY="8.0" prefHeight="263.0" prefWidth="265.0">
+                              <AnchorPane fx:id="menuPrinter3" layoutX="15.0" layoutY="8.0" prefHeight="263.0" prefWidth="265.0">
                                  <children>
                                     <Label alignment="CENTER" layoutX="23.0" layoutY="22.0" text="3D Printer #3" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -133,30 +133,30 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
+                                    <Label fx:id="X_3" alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
+                                    <Label fx:id="Y_3" alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
+                                    <Label fx:id="Z_3" alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="130.0" layoutY="193.0" text="EXDRUDER:" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="193.0" />
                                     <Label layoutX="130.0" layoutY="213.0" prefHeight="17.0" prefWidth="67.0" text="BED:" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="213.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
-                                    <ChoiceBox layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
-                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                    <Label fx:id="nozzTemp_3" alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
+                                    <Label fx:id="bedTemp_3" alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
+                                    <ChoiceBox fx:id="choiceBox3" layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
+                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" onAction="#close3" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
                                     <Label layoutX="130.0" layoutY="233.0" prefHeight="17.0" prefWidth="67.0" text="Status:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="231.0" />
-                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
+                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" onAction="#conntect3" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
+                                    <Label fx:id="status_3" alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -171,12 +171,12 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="113.0" layoutY="122.0" mnemonicParsing="false" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                              <Button fx:id="setPrinter2" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="113.0" layoutY="122.0" mnemonicParsing="false" onAction="#plus2" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
                               </Button>
-                              <AnchorPane layoutX="15.0" layoutY="9.0" prefHeight="263.0" prefWidth="265.0">
+                              <AnchorPane fx:id="menuPrinter2" layoutX="15.0" layoutY="9.0" prefHeight="263.0" prefWidth="265.0">
                                  <children>
                                     <Label alignment="CENTER" layoutX="23.0" layoutY="22.0" text="3D Printer #2" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -207,42 +207,42 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
+                                    <Label fx:id="X_2" alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
+                                    <Label fx:id="Y_2" alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
+                                    <Label fx:id="Z_2" alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="130.0" layoutY="193.0" text="EXDRUDER:" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="193.0" />
                                     <Label layoutX="130.0" layoutY="213.0" prefHeight="17.0" prefWidth="67.0" text="BED:" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="213.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
-                                    <ChoiceBox layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
-                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                    <Label fx:id="nozzTemp_2" alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
+                                    <Label fx:id="bedTemp_2" alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
+                                    <ChoiceBox fx:id="choiceBox2" layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
+                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" onAction="#close2" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
                                     <Label layoutX="130.0" layoutY="233.0" prefHeight="17.0" prefWidth="67.0" text="Status:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="231.0" />
-                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
+                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" onAction="#conntect2" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
+                                    <Label fx:id="status_2" alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="112.0" layoutY="108.0" mnemonicParsing="false" text="+" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                              <Button fx:id="setPrinter4" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="112.0" layoutY="108.0" mnemonicParsing="false" onAction="#plus4" text="+" textOverrun="WORD_ELLIPSIS" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
                               </Button>
-                              <AnchorPane layoutX="15.0" layoutY="8.0" prefHeight="263.0" prefWidth="265.0" visible="false">
+                              <AnchorPane fx:id="menuPrinter4" layoutX="15.0" layoutY="8.0" prefHeight="263.0" prefWidth="265.0">
                                  <children>
                                     <Label alignment="CENTER" layoutX="23.0" layoutY="22.0" text="3D Printer #4" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -273,30 +273,30 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
+                                    <Label fx:id="X_4" alignment="TOP_RIGHT" layoutX="73.0" layoutY="198.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="191.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
+                                    <Label fx:id="Y_4" alignment="TOP_RIGHT" layoutX="73.0" layoutY="211.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="211.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
+                                    <Label fx:id="Z_4" alignment="TOP_RIGHT" layoutX="73.0" layoutY="231.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="231.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="130.0" layoutY="193.0" text="EXDRUDER:" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="193.0" />
                                     <Label layoutX="130.0" layoutY="213.0" prefHeight="17.0" prefWidth="67.0" text="BED:" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="213.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
-                                    <ChoiceBox layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
-                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                    <Label fx:id="nozzTemp_4" alignment="TOP_RIGHT" layoutX="200.0" layoutY="193.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="193.0" />
+                                    <Label fx:id="bedTemp_4" alignment="TOP_RIGHT" layoutX="200.0" layoutY="213.0" text="0C°" textAlignment="RIGHT" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="213.0" />
+                                    <ChoiceBox fx:id="choiceBox4" layoutX="194.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="50.0" />
+                                    <Button contentDisplay="CENTER" layoutX="239.0" layoutY="2.0" mnemonicParsing="false" onAction="#close4" text="X" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
                                     <Label layoutX="130.0" layoutY="233.0" prefHeight="17.0" prefWidth="67.0" text="Status:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="231.0" />
-                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
-                                    <Label alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
+                                    <Button layoutX="194.0" layoutY="77.0" mnemonicParsing="false" onAction="#conntect4" prefHeight="25.0" prefWidth="65.0" text="Connect" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="77.0" />
+                                    <Label fx:id="status_4" alignment="TOP_RIGHT" layoutX="217.0" layoutY="233.0" text="100%" textAlignment="RIGHT" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="231.0" />
                                  </children>
                               </AnchorPane>
                            </children>

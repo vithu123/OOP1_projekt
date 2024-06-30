@@ -1,15 +1,16 @@
 package com.example;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
-import com.fazecast.jSerialComm.SerialPort;
+
 
 /* 
 JavaFX App
@@ -20,89 +21,25 @@ public class App extends Application {
     private static Scene scene;
 
     public static void main(String[] args) {
-        /* 
-        System.out.println("3D drucker Dashbord gestartet!");
-        Druckerverwaltung  test = new  Druckerverwaltung();
-        PrintJob file1 = new PrintJob("test1");
-        test.addJob(file1);
-        test.startNextJob();
-        test.startNextJob();*/
-
-        Printer printer1 = new Printer();
-        printer1.setPrintername("printer1");
-        Printer printer2 = new Printer();
-        printer2.setPrintername("printer2");
-        Printer printer3 = new Printer();
-        printer3.setPrintername("printer3");
-        Printer printer4 = new Printer();
-        printer4.setPrintername("printer4");
-        
-        
-        USBCommunicator communication1 = new USBCommunicator("COM5");
-        communication1.listAllComPorts();
-        communication1.connect();
-        try {
-            Thread.sleep(5000);
-          } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-          }
-        //
-        
-
-        
-        
-        communication1.sendCommand("M105\n");
-        
-        String test = communication1.readResponse();
-        System.out.println("1 :"+test);
-        String test2 = communication1.readResponse();
-        System.out.println("2 :"+test2);
-        try {
-            Thread.sleep(1000);
-          } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-          }
-        communication1.sendCommand("M114\n");
-        try {
-            Thread.sleep(10000);
-          } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-          }
-        test = communication1.readResponse();
-        System.out.println("3 :"+test);
-        communication1.sendCommand("G0 Z60\n");
-        //communication1.disconnect();
-        //communication1.sendCommand("G0 Z30");
-       /* test = communication1.readResponse();
-        
-        communication1.sendCommand("M104");
-        test = communication1.readResponse();
-        test2 = communication1.readResponse();
-        System.out.println("1 :"+test);
-        System.out.println("2 :"+test2);
-        communication1.disconnect();
-        /*
-        communication1.setPrinterNameProt("printer1");
-        communication1.listAllComPorts();
-        USBCommunicator communication2 = new USBCommunicator();
-        communication2.setPrinterNameProt("printer2");
-        USBCommunicator communication3 = new USBCommunicator();
-        communication3.setPrinterNameProt("printer3");
-        USBCommunicator communication4 = new USBCommunicator();
-        communication4.setPrinterNameProt("printer4");*/
-        communication1.sendCommand("G0 Z10\n");
-        launch();
-        
-        
+        launch();  
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("printer"), 640, 480);
+        scene = new Scene(loadFXML("printer"), 600, 600);
         stage.setTitle("3d Drucker");
         stage.setScene(scene);
         stage.show();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> collectSensorData()));
+        timeline.setCycleCount(Timeline.INDEFINITE); // Unbegrenzte Wiederholung
+        timeline.play();
+
+
     }
+
+
+
 
     static void setSceneRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -112,6 +49,410 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
-    
+    private void collectSensorData() {
+      float finalNozzleTemp;
+      float finalBedTemp;
+      float final_X;
+      float final_Y;
+      float final_Z;
+        if(PrinterManager.printer1.getCollectSensorData()){
+
+          PrinterManager.communicator1.sendCommand("M105\n");
+          try {
+            Thread.sleep(50);
+          } 
+          catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+          String input = PrinterManager.communicator1.readResponse();
+          String[] parts = input.split(" ");
+          for(String part : parts){
+            if(part.startsWith("T:")){
+              String[] tempParts = part.split("T:");
+              PrinterManager.printer1.setNozzelTemp(Float.parseFloat(tempParts[1]));
+              System.out.println(PrinterManager.printer1.getNozzelTemp());  
+            }
+            if(part.startsWith("B:")){
+              String[] bedParts = part.split("B:");
+              PrinterManager.printer1.setBedTemp(Float.parseFloat(bedParts[1]));
+              System.out.println(PrinterManager.printer1.getBedTemp());
+            }       
+          }
+          finalNozzleTemp = PrinterManager.printer1.getNozzelTemp();
+          finalBedTemp = PrinterManager.printer1.getBedTemp();
+          PrinterController.setStatic_nozzTemp_1(String.format("%.0f",finalNozzleTemp));
+          PrinterController.setStatic_bedTemp_1(String.format("%.0f",finalBedTemp));
+          PrinterManager.communicator1.sendCommand("M114\n");
+          try {
+            Thread.sleep(50);
+          } 
+          catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+          input = PrinterManager.communicator1.readResponse();
+          parts = input.split(" ");
+          for(String part : parts){
+            if(part.startsWith("X:")){
+              String[] posX = part.split("X:");
+              PrinterManager.printer1.setPosition(Float.parseFloat(posX[1]),0);
+              System.out.println(PrinterManager.printer1.getPosition(0));
+            }
+            if(part.startsWith("Y:")){
+              String[] posY = part.split("Y:");
+              PrinterManager.printer1.setPosition(Float.parseFloat(posY[1]),1);
+              System.out.println(PrinterManager.printer1.getPosition(1)); 
+            }
+            if(part.startsWith("Z:")){
+              String[] posZ = part.split("Z:");
+              PrinterManager.printer1.setPosition(Float.parseFloat(posZ[1]),2);
+              System.out.println(PrinterManager.printer1.getPosition(2)); 
+            }
+            if(part.startsWith("Count")){
+              break;
+            }
+            final_X = PrinterManager.printer1.getPosition(0);
+            final_Y = PrinterManager.printer1.getPosition(1);
+            final_Z = PrinterManager.printer1.getPosition(2);
+            PrinterController.setStatic_X_1(String.format("%.0f",final_X));
+            PrinterController.setStatic_Y_1(String.format("%.0f",final_Y));
+            PrinterController.setStatic_Z_1(String.format("%.0f",final_Z));
+
+          }
+          PrinterManager.communicator1.sendCommand("M27\n");
+          try {
+            Thread.sleep(50);
+          } 
+          catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+          input = PrinterManager.communicator1.readResponse();
+          parts = input.split(" ");
+          if(input.startsWith("Not")){
+            PrinterController.setStatic_status_1("-");
+            System.out.println("-");
+          }
+          if(input.startsWith("SD")){
+            PrinterController.setStatic_status_1(parts[3]);
+            System.out.println(parts[3]);
+          }
+      } 
+      if(PrinterManager.printer2.getCollectSensorData()){
+
+        PrinterManager.communicator2.sendCommand("M105\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        String input = PrinterManager.communicator2.readResponse();
+        String[] parts = input.split(" ");
+        for(String part : parts){
+          if(part.startsWith("T:")){
+            String[] tempParts = part.split("T:");
+            PrinterManager.printer2.setNozzelTemp(Float.parseFloat(tempParts[1]));
+            System.out.println(PrinterManager.printer2.getNozzelTemp());  
+          }
+          if(part.startsWith("B:")){
+            String[] bedParts = part.split("B:");
+            PrinterManager.printer2.setBedTemp(Float.parseFloat(bedParts[1]));
+            System.out.println(PrinterManager.printer2.getBedTemp());
+          }       
+        }
+        finalNozzleTemp = PrinterManager.printer2.getNozzelTemp();
+        finalBedTemp = PrinterManager.printer2.getBedTemp();
+        PrinterController.setStatic_nozzTemp_2(String.format("%.0f",finalNozzleTemp));
+        PrinterController.setStatic_bedTemp_2(String.format("%.0f",finalBedTemp));
+        PrinterManager.communicator2.sendCommand("M114\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator2.readResponse();
+        parts = input.split(" ");
+        for(String part : parts){
+          if(part.startsWith("X:")){
+            String[] posX = part.split("X:");
+            PrinterManager.printer2.setPosition(Float.parseFloat(posX[1]),0);
+            System.out.println(PrinterManager.printer2.getPosition(0));
+          }
+          if(part.startsWith("Y:")){
+            String[] posY = part.split("Y:");
+            PrinterManager.printer2.setPosition(Float.parseFloat(posY[1]),1);
+            System.out.println(PrinterManager.printer2.getPosition(1)); 
+          }
+          if(part.startsWith("Z:")){
+            String[] posZ = part.split("Z:");
+            PrinterManager.printer2.setPosition(Float.parseFloat(posZ[1]),2);
+            System.out.println(PrinterManager.printer2.getPosition(2)); 
+          }
+          if(part.startsWith("Count")){
+            break;
+          }
+          final_X = PrinterManager.printer2.getPosition(0);
+          final_Y = PrinterManager.printer2.getPosition(1);
+          final_Z = PrinterManager.printer2.getPosition(2);
+          PrinterController.setStatic_X_2(String.format("%.0f",final_X));
+          PrinterController.setStatic_Y_2(String.format("%.0f",final_Y));
+          PrinterController.setStatic_Z_2(String.format("%.0f",final_Z));
+      
+        }
+        PrinterManager.communicator2.sendCommand("M27\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator2.readResponse();
+        parts = input.split(" ");
+        if(input.startsWith("Not")){
+          PrinterController.setStatic_status_2("-");
+          System.out.println("-");
+        }
+        if(input.startsWith("SD")){
+          PrinterController.setStatic_status_2(parts[3]);
+          System.out.println(parts[3]);
+        }
+      } 
+      if(PrinterManager.printer3.getCollectSensorData()){
+
+        PrinterManager.communicator3.sendCommand("M105\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        String input = PrinterManager.communicator3.readResponse();
+        String[] parts = input.split(" ");
+        for(String part : parts){
+          if(part.startsWith("T:")){
+            String[] tempParts = part.split("T:");
+            PrinterManager.printer3.setNozzelTemp(Float.parseFloat(tempParts[1]));
+            System.out.println(PrinterManager.printer3.getNozzelTemp());  
+          }
+          if(part.startsWith("B:")){
+            String[] bedParts = part.split("B:");
+            PrinterManager.printer3.setBedTemp(Float.parseFloat(bedParts[1]));
+            System.out.println(PrinterManager.printer3.getBedTemp());
+          }       
+        }
+        finalNozzleTemp = PrinterManager.printer3.getNozzelTemp();
+        finalBedTemp = PrinterManager.printer3.getBedTemp();
+        PrinterController.setStatic_nozzTemp_3(String.format("%.0f",finalNozzleTemp));
+        PrinterController.setStatic_bedTemp_3(String.format("%.0f",finalBedTemp));
+        PrinterManager.communicator3.sendCommand("M114\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator3.readResponse();
+        parts = input.split(" ");
+        for(String part : parts){
+          if(part.startsWith("X:")){
+            String[] posX = part.split("X:");
+            PrinterManager.printer3.setPosition(Float.parseFloat(posX[1]),0);
+            System.out.println(PrinterManager.printer3.getPosition(0));
+          }
+          if(part.startsWith("Y:")){
+            String[] posY = part.split("Y:");
+            PrinterManager.printer3.setPosition(Float.parseFloat(posY[1]),1);
+            System.out.println(PrinterManager.printer3.getPosition(1)); 
+          }
+          if(part.startsWith("Z:")){
+            String[] posZ = part.split("Z:");
+            PrinterManager.printer3.setPosition(Float.parseFloat(posZ[1]),2);
+            System.out.println(PrinterManager.printer3.getPosition(2)); 
+          }
+          if(part.startsWith("Count")){
+            break;
+          }
+          final_X = PrinterManager.printer3.getPosition(0);
+          final_Y = PrinterManager.printer3.getPosition(1);
+          final_Z = PrinterManager.printer3.getPosition(2);
+          PrinterController.setStatic_X_3(String.format("%.0f",final_X));
+          PrinterController.setStatic_Y_3(String.format("%.0f",final_Y));
+          PrinterController.setStatic_Z_3(String.format("%.0f",final_Z));
+      
+        }
+        PrinterManager.communicator3.sendCommand("M27\n");
+        try {
+          Thread.sleep(50);
+        } 
+        catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator3.readResponse();
+        parts = input.split(" ");
+        if(input.startsWith("Not")){
+          PrinterController.setStatic_status_3("-");
+          System.out.println("-");
+        }
+        if(input.startsWith("SD")){
+          PrinterController.setStatic_status_3(parts[3]);
+          System.out.println(parts[3]);
+        }
+      }
+      if (PrinterManager.printer3.getCollectSensorData()) {
+
+        PrinterManager.communicator3.sendCommand("M105\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        String input = PrinterManager.communicator3.readResponse();
+        String[] parts = input.split(" ");
+        for (String part : parts) {
+            if (part.startsWith("T:")) {
+                String[] tempParts = part.split("T:");
+                PrinterManager.printer3.setNozzelTemp(Float.parseFloat(tempParts[1]));
+                System.out.println(PrinterManager.printer3.getNozzelTemp());
+            }
+            if (part.startsWith("B:")) {
+                String[] bedParts = part.split("B:");
+                PrinterManager.printer3.setBedTemp(Float.parseFloat(bedParts[1]));
+                System.out.println(PrinterManager.printer3.getBedTemp());
+            }
+        }
+        finalNozzleTemp = PrinterManager.printer3.getNozzelTemp();
+        finalBedTemp = PrinterManager.printer3.getBedTemp();
+        PrinterController.setStatic_nozzTemp_3(String.format("%.0f", finalNozzleTemp));
+        PrinterController.setStatic_bedTemp_3(String.format("%.0f", finalBedTemp));
+        PrinterManager.communicator3.sendCommand("M114\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator3.readResponse();
+        parts = input.split(" ");
+        for (String part : parts) {
+            if (part.startsWith("X:")) {
+                String[] posX = part.split("X:");
+                PrinterManager.printer3.setPosition(Float.parseFloat(posX[1]), 0);
+                System.out.println(PrinterManager.printer3.getPosition(0));
+            }
+            if (part.startsWith("Y:")) {
+                String[] posY = part.split("Y:");
+                PrinterManager.printer3.setPosition(Float.parseFloat(posY[1]), 1);
+                System.out.println(PrinterManager.printer3.getPosition(1));
+            }
+            if (part.startsWith("Z:")) {
+                String[] posZ = part.split("Z:");
+                PrinterManager.printer3.setPosition(Float.parseFloat(posZ[1]), 2);
+                System.out.println(PrinterManager.printer3.getPosition(2));
+            }
+            if (part.startsWith("Count")) {
+                break;
+            }
+            final_X = PrinterManager.printer3.getPosition(0);
+            final_Y = PrinterManager.printer3.getPosition(1);
+            final_Z = PrinterManager.printer3.getPosition(2);
+            PrinterController.setStatic_X_3(String.format("%.0f", final_X));
+            PrinterController.setStatic_Y_3(String.format("%.0f", final_Y));
+            PrinterController.setStatic_Z_3(String.format("%.0f", final_Z));
+        }
+        PrinterManager.communicator3.sendCommand("M27\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator3.readResponse();
+        parts = input.split(" ");
+        if (input.startsWith("Not")) {
+            PrinterController.setStatic_status_3("-");
+            System.out.println("-");
+        }
+        if (input.startsWith("SD")) {
+            PrinterController.setStatic_status_3(parts[3]);
+            System.out.println(parts[3]);
+        }
+      }
+      if (PrinterManager.printer4.getCollectSensorData()) {
+
+        PrinterManager.communicator4.sendCommand("M105\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        String input = PrinterManager.communicator4.readResponse();
+        String[] parts = input.split(" ");
+        for (String part : parts) {
+            if (part.startsWith("T:")) {
+                String[] tempParts = part.split("T:");
+                PrinterManager.printer4.setNozzelTemp(Float.parseFloat(tempParts[1]));
+                System.out.println(PrinterManager.printer4.getNozzelTemp());
+            }
+            if (part.startsWith("B:")) {
+                String[] bedParts = part.split("B:");
+                PrinterManager.printer4.setBedTemp(Float.parseFloat(bedParts[1]));
+                System.out.println(PrinterManager.printer4.getBedTemp());
+            }
+        }
+        finalNozzleTemp = PrinterManager.printer4.getNozzelTemp();
+        finalBedTemp = PrinterManager.printer4.getBedTemp();
+        PrinterController.setStatic_nozzTemp_4(String.format("%.0f", finalNozzleTemp));
+        PrinterController.setStatic_bedTemp_4(String.format("%.0f", finalBedTemp));
+        PrinterManager.communicator4.sendCommand("M114\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator4.readResponse();
+        parts = input.split(" ");
+        for (String part : parts) {
+            if (part.startsWith("X:")) {
+                String[] posX = part.split("X:");
+                PrinterManager.printer4.setPosition(Float.parseFloat(posX[1]), 0);
+                System.out.println(PrinterManager.printer4.getPosition(0));
+            }
+            if (part.startsWith("Y:")) {
+                String[] posY = part.split("Y:");
+                PrinterManager.printer4.setPosition(Float.parseFloat(posY[1]), 1);
+                System.out.println(PrinterManager.printer4.getPosition(1));
+            }
+            if (part.startsWith("Z:")) {
+                String[] posZ = part.split("Z:");
+                PrinterManager.printer4.setPosition(Float.parseFloat(posZ[1]), 2);
+                System.out.println(PrinterManager.printer4.getPosition(2));
+            }
+            if (part.startsWith("Count")) {
+                break;
+            }
+            final_X = PrinterManager.printer4.getPosition(0);
+            final_Y = PrinterManager.printer4.getPosition(1);
+            final_Z = PrinterManager.printer4.getPosition(2);
+            PrinterController.setStatic_X_4(String.format("%.0f", final_X));
+            PrinterController.setStatic_Y_4(String.format("%.0f", final_Y));
+            PrinterController.setStatic_Z_4(String.format("%.0f", final_Z));
+        }
+        PrinterManager.communicator4.sendCommand("M27\n");
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        input = PrinterManager.communicator4.readResponse();
+        parts = input.split(" ");
+        if (input.startsWith("Not")) {
+            PrinterController.setStatic_status_4("-");
+            System.out.println("-");
+        }
+        if (input.startsWith("SD")) {
+            PrinterController.setStatic_status_4(parts[3]);
+            System.out.println(parts[3]);
+        }
+      }
+
+    }
 
 }

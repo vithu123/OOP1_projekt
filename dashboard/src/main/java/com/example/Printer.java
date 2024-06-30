@@ -14,8 +14,8 @@ public class  Printer extends PrinterStatus{
     public float getBedTemp() {
         return bedTemp;
     }
-    public float[] getPosition() {
-        return position;
+    public float getPosition(int arraypos) {
+        return this.position[arraypos];
     }
     public void setPrintername(String printername) {
         this.printername = printername;
@@ -26,14 +26,8 @@ public class  Printer extends PrinterStatus{
     public void setBedTemp(float bedTemp) {
         this.bedTemp = bedTemp;
     }
-    public void setPosition(float[] position) {
-        this.position = position;
+    public void setPosition(float position,int arraypos) {
+        this.position[arraypos] = position;
     }
-    
-    
 
-
-
-
-    
 }

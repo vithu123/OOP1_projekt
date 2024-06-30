@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="439.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="439.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FileContoller">
   <tabs>
     <Tab text="3D Printer #1">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="439.0">
                <children>
-                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
+                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" onAction="#fileChoos_1" prefHeight="70.0" prefWidth="70.0">
                      <graphic>
                         <TilePane prefHeight="148.0" prefWidth="136.0">
                            <children>
@@ -29,17 +29,22 @@
                         </TilePane>
                      </graphic>
                   </Button>
-                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="LOAD">
+                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" onAction="#load_1" prefHeight="24.0" prefWidth="94.0" text="LOAD">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="READ">
+                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" onAction="#read_1" prefHeight="24.0" prefWidth="94.0" text="READ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TextArea layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <TextArea fx:id="fileRead_1" layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <Button layoutX="305.0" layoutY="62.0" mnemonicParsing="false" onAction="#back_1" prefHeight="24.0" prefWidth="94.0" text="back">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -47,7 +52,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="439.0">
                <children>
-                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
+                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" onAction="#fileChoos_2" prefHeight="70.0" prefWidth="70.0">
                      <graphic>
                         <TilePane prefHeight="148.0" prefWidth="136.0">
                            <children>
@@ -60,17 +65,22 @@
                         </TilePane>
                      </graphic>
                   </Button>
-                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="LOAD">
+                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" onAction="#load_2" prefHeight="24.0" prefWidth="94.0" text="LOAD">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="READ">
+                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" onAction="#read_2" prefHeight="24.0" prefWidth="94.0" text="READ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TextArea layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <TextArea fx:id="fileRead_2" layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <Button layoutX="305.0" layoutY="62.0" mnemonicParsing="false" onAction="#back_2" prefHeight="24.0" prefWidth="94.0" text="back">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
@@ -79,7 +89,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="439.0">
                <children>
-                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
+                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" onAction="#fileChoos_3" prefHeight="70.0" prefWidth="70.0">
                      <graphic>
                         <TilePane prefHeight="148.0" prefWidth="136.0">
                            <children>
@@ -92,17 +102,22 @@
                         </TilePane>
                      </graphic>
                   </Button>
-                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="LOAD">
+                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" onAction="#load_3" prefHeight="24.0" prefWidth="94.0" text="LOAD">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="READ">
+                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" onAction="#read_3" prefHeight="24.0" prefWidth="94.0" text="READ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TextArea layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <TextArea fx:id="fileRead_3" layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <Button layoutX="305.0" layoutY="62.0" mnemonicParsing="false" onAction="#back_3" prefHeight="24.0" prefWidth="94.0" text="back">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
@@ -111,7 +126,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="439.0">
                <children>
-                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
+                  <Button layoutX="41.0" layoutY="21.0" mnemonicParsing="false" onAction="#fileChoos_4" prefHeight="70.0" prefWidth="70.0">
                      <graphic>
                         <TilePane prefHeight="148.0" prefWidth="136.0">
                            <children>
@@ -124,17 +139,22 @@
                         </TilePane>
                      </graphic>
                   </Button>
-                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="LOAD">
+                  <Button layoutX="156.0" layoutY="22.0" mnemonicParsing="false" onAction="#load_4" prefHeight="24.0" prefWidth="94.0" text="LOAD">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="94.0" text="READ">
+                  <Button layoutX="156.0" layoutY="62.0" mnemonicParsing="false" onAction="#read_4" prefHeight="24.0" prefWidth="94.0" text="READ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TextArea layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <TextArea fx:id="fileRead_4" layoutX="44.0" layoutY="157.0" prefHeight="154.0" prefWidth="355.0" />
+                  <Button layoutX="305.0" layoutY="62.0" mnemonicParsing="false" onAction="#back_4" prefHeight="24.0" prefWidth="94.0" text="back">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>

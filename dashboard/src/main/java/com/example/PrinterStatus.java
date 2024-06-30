@@ -1,12 +1,15 @@
 package com.example;
 
-public class PrinterStatus /*extends PrintJob */{
+public class PrinterStatus extends PrintJob {
 
     private boolean isPrinting;
     private String currentJob;
+    private static boolean collectSensorData;
 
+    
+
+   
     public PrinterStatus() {
-        //super("kein job"); 
         this.isPrinting = false;
         this.currentJob = "Kein Job"; 
     }
@@ -24,5 +27,11 @@ public class PrinterStatus /*extends PrintJob */{
 
     public void setCurrentJob(String currentJob) {
         this.currentJob = currentJob;
+    }
+    public void setCollectSensorData(boolean collectSensorData) {
+        PrinterStatus.collectSensorData = collectSensorData;
+    }
+    public boolean getCollectSensorData() {
+        return collectSensorData;
     }
 }

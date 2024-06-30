@@ -3,11 +3,13 @@ package com.example;
 import java.io.IOException;
 
 import com.fazecast.jSerialComm.SerialPort;
-import com.fazecast.jSerialComm.SerialPortEvent;
 
-public class USBCommunicator {
+
+public class USBCommunicator{
     private SerialPort comPort;
     private String printerNamePort;
+   
+
     public USBCommunicator() {
         comPort.setComPortParameters(115200, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
     }
@@ -18,20 +20,29 @@ public class USBCommunicator {
     }
     public void setComPort(String comPort) {
         this.comPort = SerialPort.getCommPort(comPort);
+        this.comPort.setComPortParameters(115200, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
+        
     }
     public void setPrinterNameProt(String printerNamePort) {
         this.printerNamePort = printerNamePort;
     }
-    public void listAllComPorts() {
+    public String getPrinterNamePort() {
+        return printerNamePort;
+    }
+    public String listAllComPorts() {
         SerialPort[] comPorts = SerialPort.getCommPorts();
+        StringBuilder reString = new StringBuilder();
+        
         if (comPorts.length == 0) {
             System.out.println("No COM ports available.");
         } else {
-            System.out.println("Available COM ports:");
             for (SerialPort comPort : comPorts) {
-                System.out.println("Port: " + comPort.getSystemPortName() + " - " + comPort.getDescriptivePortName());
+                String portName = comPort.getSystemPortName();
+                reString.append(portName).append("\n");
+                System.out.println(portName);
             }
         }
+        return reString.toString();
     }
     
 
